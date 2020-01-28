@@ -121,8 +121,8 @@ script:
         CFLAGS="--coverage" python setup.py build --build-lib build/lib/ --build-temp build/tmp/
         CFLAGS="--coverage" pip install -e . -v
         pushd demo
-        #pytest --pyargs pywt --cov=pywt --cov-config=../.coveragerc
-        cp .coverage ..
+        pytest --pyargs pywt --cov=pywt --cov-config=../.coveragerc
+        cp .coveragerc ..
         popd
     fi
 
