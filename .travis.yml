@@ -108,7 +108,7 @@ script:
         pushd dist
         pip install PyWavelets* -v
         pytest --pyargs pywt
-        python ../pywt/tests/test_doc.py
+        #python ../pywt/tests/test_doc.py
         popd
     elif [ "${REFGUIDE_CHECK}" == "1" ]; then
         pip install -e . -v
@@ -117,7 +117,7 @@ script:
         CFLAGS="--coverage" python setup.py build --build-lib build/lib/ --build-temp build/tmp/
         CFLAGS="--coverage" pip install -e . -v
         pushd demo
-        pytest --pyargs pywt --cov=pywt --cov-config=../.coveragerc
+        #pytest --pyargs pywt --cov=pywt --cov-config=../.coveragerc
         cp .coverage ..
         popd
     fi
