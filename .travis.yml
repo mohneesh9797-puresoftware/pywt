@@ -114,7 +114,7 @@ script:
         python ../pywt/tests/test_doc.py;
         fi
         popd
-    elif [ "${REFGUIDE_CHECK}" == "1"]; then
+    elif [ "${REFGUIDE_CHECK}" == "1" ]; then
         pip install -e . -v
         python util/refguide_check.py --doctests
     else
