@@ -100,7 +100,9 @@ script:
         pip install PyWavelets*.whl -v
         pushd demo
         pytest --pyargs pywt
-        python ../pywt/tests/test_doc.py
+        if [[ "${TRAVIS_CPU_ARCH}" != "arm64" ]]; then
+        python ../pywt/tests/test_doc.py;
+        fi
         popd
     elif [ "${USE_SDIST}" == "1" ]; then
         python setup.py sdist
@@ -108,9 +110,11 @@ script:
         pushd dist
         pip install PyWavelets* -v
         pytest --pyargs pywt
-        #python ../pywt/tests/test_doc.py
+        if [[ "${TRAVIS_CPU_ARCH}" != "arm64" ]]; then
+        python ../pywt/tests/test_doc.py;
+        fi
         popd
-    elif [ "${REFGUIDE_CHECK}" == "1" ]; then
+    elif [ "${REFGUIDE_CHECK}" == "1" &&  [ "${TRAVIS_CPU_ARCH}" != "arm64" ]]; then
         pip install -e . -v
         python util/refguide_check.py --doctests
     else
